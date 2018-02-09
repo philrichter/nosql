@@ -35,16 +35,18 @@ public class MitarbeiterSuche extends Request {
 		finit();
 	}
 	
-	public void printFilteredMitarbeiter(String key, Object search) {
+	public void printFilteredMitarbeiter(String key, Object search, boolean showDetails) {
 		BasicDBObject filter = buildFilter(key, search);
-		printMitarbeiter(findDocuments(filter), true);
+		printMitarbeiter(findDocuments(filter), showDetails);
 		finit();
 	}
 	
+	public void printFilteredMitarbeiter(String key, Object search) {
+		printFilteredMitarbeiter(key, search, true);
+	}
+	
 	public void printFilteredMitarbeiterCount(String key, Object search) {
-		BasicDBObject filter = buildFilter(key, search);
-		printMitarbeiter(findDocuments(filter), false);
-		finit();
+		printFilteredMitarbeiter(key, search, false);
 	}
 
 }
