@@ -10,7 +10,8 @@ public class Console {
 		
 		//mitarbeiterSuche.printAllMitarbeiter();
 		//TODO: aus args auslesen
-		mitarbeiterSuche.printFilteredMitarbeiter("Email", "nlindmanj@cisco.com");
+		//mitarbeiterSuche.printFilteredMitarbeiter("Email", "nlindmanj@cisco.com");
+		mitarbeiterSuche.printFilteredMitarbeiter("Geschlecht", "Female");
 	}
 
 }
