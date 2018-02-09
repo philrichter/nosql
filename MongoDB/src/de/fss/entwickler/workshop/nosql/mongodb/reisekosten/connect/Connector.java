@@ -8,7 +8,7 @@ public class Connector {
 	private static final String SERVER_NAME = "localhost";
 	private static final int SERVER_PORT = 27017;
 	
-	private String databaseName = "FSS";
+	private String databaseName = "reisekosten";
 	
 	private MongoClient client;
 	
