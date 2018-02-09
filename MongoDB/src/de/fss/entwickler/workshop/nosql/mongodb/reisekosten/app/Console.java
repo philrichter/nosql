@@ -8,7 +8,9 @@ public class Console {
 		if(mitarbeiterSuche == null)
 			mitarbeiterSuche = new MitarbeiterSuche();
 		
-		mitarbeiterSuche.printAllMitarbeiter();
+		//mitarbeiterSuche.printAllMitarbeiter();
+		//TODO: aus args auslesen
+		mitarbeiterSuche.printFilteredMitarbeiter("Email", "nlindmanj@cisco.com");
 	}
 
 }

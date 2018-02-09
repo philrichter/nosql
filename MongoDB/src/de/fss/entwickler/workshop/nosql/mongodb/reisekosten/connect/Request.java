@@ -3,6 +3,7 @@ package de.fss.entwickler.workshop.nosql.mongodb.reisekosten.connect;
 import java.util.Iterator;
 import org.bson.Document;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 
@@ -41,6 +42,18 @@ public abstract class Request {
 			return null;
 		FindIterable<Document> iterDoc = collection.find();
 		return iterDoc.iterator();
+	}
+	
+	protected Iterator<Document> findDocuments(BasicDBObject filter) {
+		if(collection == null)
+			return null;
+		FindIterable<Document> iterDoc = collection.find(filter);
+		return iterDoc.iterator();
+	}
+	
+	protected BasicDBObject buildFilter(String key, Object value) {
+		BasicDBObject filter = new BasicDBObject(key, value);
+		return filter;
 	}
 	
 	public void finit() {
