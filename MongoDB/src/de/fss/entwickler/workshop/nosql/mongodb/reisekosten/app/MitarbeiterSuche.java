@@ -15,27 +15,35 @@ public class MitarbeiterSuche extends Request {
 		initCollection(COLLECTION_NAME_MITARBEITER);
 	}
 		
-	public void printMitarbeiter(Iterator<Document> mitarbeiterListe) {
+	public void printMitarbeiter(Iterator<Document> mitarbeiterListe, boolean printFullData) {
 		int i = 0;
 		while (mitarbeiterListe.hasNext()) {
 			Document d = (Document) mitarbeiterListe.next();
-			for(Entry<String, Object> e : d.entrySet()) {
-				System.out.println(e.getKey() + " : " + e.getValue());	
+			if(printFullData) {
+				for(Entry<String, Object> e : d.entrySet()) {
+					System.out.println(e.getKey() + " : " + e.getValue());	
+				}
+				System.out.println("------------------------------");
 			}
-			System.out.println("------------------------------");
 			i++;
 		}
-		System.out.println("Total: "+String.valueOf(i));
+		System.out.println("Total found: "+String.valueOf(i));
 	}
 	
 	public void printAllMitarbeiter() {
-		printMitarbeiter(getAllDocuments());
+		printMitarbeiter(getAllDocuments(), true);
 		finit();
 	}
 	
 	public void printFilteredMitarbeiter(String key, Object search) {
 		BasicDBObject filter = buildFilter(key, search);
-		printMitarbeiter(findDocuments(filter));
+		printMitarbeiter(findDocuments(filter), true);
+		finit();
+	}
+	
+	public void printFilteredMitarbeiterCount(String key, Object search) {
+		BasicDBObject filter = buildFilter(key, search);
+		printMitarbeiter(findDocuments(filter), false);
 		finit();
 	}
 
